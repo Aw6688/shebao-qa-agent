@@ -1,0 +1,13 @@
+# shebao-qa-agent dependencies
+# Versions pinned from the dev machine (Python 3.12 / Windows) via pip freeze
+
+# Agent core
+langgraph==1.2.20
+mcp==2.3.0
+openai==3.45.0
+pydantic==2.14.2
+python-dotenv==1.2.4
+
+# Web service
+uvicorn==0.54.0
+fastapi==0.162.5

@@ -1,0 +1,10 @@
+{
+    "deepseek": {
+        "base_url": "https://api.deepseek.com",
+        "model": "deepseek-v4-flash"
+    },
+    "zhipu": {
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "model": "glm-4.5-air"
+    }
+}
