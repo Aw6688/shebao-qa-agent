@@ -3,6 +3,7 @@
 
 # Agent core
 langgraph==1.2.20
+langchain-openai==1.8.0
 mcp==2.3.0
 openai==3.45.0
 pydantic==2.14.2
