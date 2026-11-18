@@ -10,18 +10,20 @@ class ChatRequest(BaseModel):
     question: str = Field(
         ..., description="用户输入的问题"
     )
+    session_id: str = Field(
+        ..., description="身份标识，唯一"
+    )
 
-app = FastAPI(title="shebao_stream", version="1.1")
+app = FastAPI(title="shebao-Q&A", version="1.1")
+app.mount("/page", StaticFiles(directory="static", html=True), name="page")
 
-async def stream_answer(question: str):
-    async for content in ask(question):
-        yield "data: " + json.dumps({"token":content}, ensure_ascii=False) + "\n\n"
+async def stream_answer(question: str, session_id: str):
+    async for content in ask(question, session_id):
+        yield "data: " + json.dumps({"token": content}, ensure_ascii=False) + "\n\n"
 
 @app.post("/chat")
-async def chat(param: ChatRequest):
-    return StreamingResponse(stream_answer(param.question), media_type="text/event-stream")
-
-app.mount("/", StaticFiles(directory="static", html=True))
+async def chat(params: ChatRequest):
+    return StreamingResponse(stream_answer(params.question, params.session_id), media_type="text/event-stream")
 
 if __name__ == "__main__":
-    uvicorn.run(app=app, host="127.0.0.1", port=8020)
+    uvicorn.run(app, host="127.0.0.1", port=8020)
