@@ -25,7 +25,7 @@ PROMPT = """你是公共事务问答助手，调用的大模型是智谱GLM，�
 PYTHON = sys.executable
 SERVER = Path(__file__).parent/"server.py"
 
-provider = os.getenv("provider", "ZHIPU")
+provider = os.getenv("PROVIDER", "zhipu")
 key = os.getenv(f"{provider.upper()}_API_KEY")
 if not key:
     raise ValueError("请先配置一个模型API的key")

@@ -66,9 +66,17 @@ python agent.py
 python api.py                   # 浏览器打开 http://127.0.0.1:8020（SSE 流式输出）
 ```
 
+## Docker 运行（可选）
+
+```bash
+docker build -t shebao-qa:1 .
+docker run --rm -p 8020:8020 --env-file .env shebao-qa:1
+# 浏览器打开 http://localhost:8020/page
+```
+
 ## Roadmap
 
-- [ ] 多轮会话历史
+- [x] 多轮会话历史
 - [x] 流式输出（agent astream messages + api SSE 信封 + 前端 reader 增量渲染）
 - [ ] 输出侧 canary 检测
 

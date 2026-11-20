@@ -26,4 +26,4 @@ async def chat(params: ChatRequest):
     return StreamingResponse(stream_answer(params.question, params.session_id), media_type="text/event-stream")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8020)
+    uvicorn.run(app, host="0.0.0.0", port=8020)
